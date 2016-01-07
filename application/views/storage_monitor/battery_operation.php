@@ -14,14 +14,14 @@
       <div class="panel-body">
         <div class="col-md-2">
           <label for="btn-operate-fan">风扇</label>
-          <input type="checkbox" name="my-checkbox" checked/>
+          <input type="checkbox" name="my-checkbox" data-on-text="关闭" data-off-text="打开" checked/>
           <script type="text/javascript">
 	  	$("[name='my-checkbox']").bootstrapSwitch();
           </script>
         </div>
         <div class="col-md-2">
           <label for="btn-operate-fan">泵</label>
-          <input type="checkbox" name="my-checkbox" checked/>
+          <input type="checkbox" name="my-checkbox" data-on-text="关闭" data-off-text="打开" checked/>
           <script type="text/javascript">
 	  	$("[name='my-checkbox']").bootstrapSwitch();
           </script>
@@ -39,9 +39,17 @@
             <div class="panel panel-default panel-pattern pannel-auto-pattern">
               <div class="panel-body">
                 <div class="col-md-2"><input type="checkbox" checked>自动模式</input></div>
-		<div class="col-md-10">
+		<div class="col-md-2">
 		  <div class="row">
-			  <input type="checkbox" name="my-checkbox" checked/>
+          	          <input type="checkbox" name="my-checkbox" data-on-text="停止充电" data-off-text="开始充电" checked/>
+                          <script type="text/javascript">
+                          	$("[name='my-checkbox']").bootstrapSwitch();
+                          </script>
+                  </div>
+                </div>
+		<div class="col-md-2">
+		  <div class="row">
+          	          <input type="checkbox" name="my-checkbox" data-on-text="停止放电" data-off-text="开始放电" checked/>
                           <script type="text/javascript">
                           	$("[name='my-checkbox']").bootstrapSwitch();
                           </script>
@@ -81,7 +89,7 @@
                         </div>
                         <div class="col-md-2">
                           <label>状态</label>
-		          <input type="checkbox" name="my-checkbox" checked/>
+          	          <input type="checkbox" name="my-checkbox" data-on-text="放电" data-off-text="充电" checked/>
                           <script type="text/javascript">
 		              $("[name='my-checkbox']").bootstrapSwitch();
                           </script>
@@ -115,8 +123,7 @@
                         </div>
                         <div class="col-md-2">
                           <label>状态</label>
-		          <input type="checkbox" name="my-checkbox" checked>
-		          <!-- <button type="button" class="btn btn-success" id="btn-auto-charge">放电</button> -->
+          	          <input type="checkbox" name="my-checkbox" data-on-text="放电" data-off-text="充电" checked/>
                           <script type="text/javascript">
 		              $("[name='my-checkbox']").bootstrapSwitch();
                           </script>
@@ -150,7 +157,7 @@
                         </div>
                         <div class="col-md-2">
                           <label>状态</label>
-		          <input type="checkbox" name="my-checkbox" checked>
+          	          <input type="checkbox" name="my-checkbox" data-on-text="放电" data-off-text="充电" checked/>
                           <script type="text/javascript">
 		              $("[name='my-checkbox']").bootstrapSwitch();
                           </script>
