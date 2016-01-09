@@ -3,5 +3,3 @@
     <p>Powerd By Codeigniter & Bootstrap</p>
   </div>
 </footer> 
-</body>
-</html>

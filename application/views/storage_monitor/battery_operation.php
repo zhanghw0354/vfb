@@ -3,7 +3,7 @@
     <link href="<?php echo base_url('public/lib/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css'); ?>" rel="stylesheet">
     <script src="<?php echo base_url('public/lib/bootstrap-switch/dist/js/bootstrap-switch.min.js'); ?>"></script>
     <link href="<?php echo base_url('public/lib/bootstrap-timepicker/css/bootstrap-timepicker.min.css'); ?>" rel="stylesheet">
-    <script src="<?php echo base_url('public/lib/bootstrap-timepicker//js/bootstrap-timepicker.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/lib/bootstrap-timepicker/js/bootstrap-timepicker.min.js'); ?>"></script>
 <?php $this->load->view('header'); ?>
 <div class="container">
   <div class="row">
@@ -110,4 +110,6 @@
     </div>
   </div>
 </div>
+<script src="<?php echo base_url('public/lib/bootstrap-timepicker/js/bootstrap-timepicker.min.js'); ?>"></script>
 <?php $this->load->view('footer'); ?>
+<?php $this->load->view('foot_segment'); ?>

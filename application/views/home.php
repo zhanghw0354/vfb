@@ -7,3 +7,4 @@
 	</div>
 </div>
 <?php $this->load->view('footer'); ?>
+<?php $this->load->view('foot_segment'); ?>
