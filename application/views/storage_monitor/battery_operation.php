@@ -82,7 +82,7 @@
 		  </div>
           <?php } ?>
           <div class="row">
-            <input type="checkbox" id="chk-manual-running" data-on-text="启动" data-off-text="停止"/>
+            <input type="checkbox" id="chk-manual-running" data-on-text="停止" data-off-text="启动"/>
           </div>
                 </div>
               </div>
@@ -93,5 +93,5 @@
   </div>
 </div>
 <?php $this->load->view('footer'); ?>
-<script src="<?php echo base_url('public/js/battery_operation.js'); ?>"></script>
+<script src="<?php echo base_url('public/js/storage_monitor/battery_operation.js'); ?>"></script>
 <?php $this->load->view('foot_segment'); ?>

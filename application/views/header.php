@@ -32,7 +32,12 @@
 	    <li><a href="#">数据报表</a></li>
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right hidden-sm">
-	    <li><a href="#">登陆</a></li>
+        <?php if ($this->session->userdata('is_login')){ ?>
+         <li><a href="#"><?php echo $this->session->userdata('username'); ?></a></li>
+         <li><a href="<?php echo base_url('user/logout'); ?>">退出</a></li>
+        <?php } else { ?>
+         <li><a href="<?php echo base_url('user/login'); ?>">登陆</a></li>
+        <?php } ?>
 	  </ul>
 	</div>
       </div>
