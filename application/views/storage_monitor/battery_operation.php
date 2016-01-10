@@ -15,16 +15,10 @@
         <div class="col-md-2">
           <label for="btn-operate-fan">风扇</label>
           <input type="checkbox" id="chk-fan" data-on-text="关闭" data-off-text="打开"/>
-          <script type="text/javascript">
-            $("#chk-fan").bootstrapSwitch();
-          </script>
         </div>
         <div class="col-md-2">
           <label for="btn-operate-fan">泵</label>
           <input type="checkbox" id="chk-pump" data-on-text="关闭" data-off-text="打开"/>
-          <script type="text/javascript">
-	  	    $("#chk-pump").bootstrapSwitch();
-          </script>
         </div>
       </div>
     </div>
@@ -38,21 +32,15 @@
           <div class="row">
             <div class="panel panel-default panel-pattern pannel-auto-pattern">
               <div class="panel-body">
-                <div class="col-md-2"><input type="checkbox" id="chk-auto-mode">自动模式</input></div>
+                <div class="col-md-2"><input type="radio" name="radio-mode" id="radio-auto-mode">自动模式</input></div>
 		<div class="col-md-2">
 		  <div class="row">
           	          <input type="checkbox" id="chk-auto-charging" data-on-text="停止充电" data-off-text="开始充电"/>
-                          <script type="text/javascript">
-                          	$("#chk-auto-charging").bootstrapSwitch();
-                          </script>
                   </div>
                 </div>
 		<div class="col-md-2">
 		  <div class="row">
           	          <input type="checkbox" id="chk-auto-discharging" data-on-text="停止放电" data-off-text="开始放电"/>
-                          <script type="text/javascript">
-                          	$("#chk-auto-discharging").bootstrapSwitch();
-                          </script>
                   </div>
                 </div>
               </div>
@@ -61,46 +49,40 @@
           <div class="row row-manual-pattern">
             <div class="panel panel-default panel-pattern">
               <div class="panel-body">
-                <div class="col-md-2"><input type="checkbox" id="chk-manual-mode">手动模式</input></div>
+                <div class="col-md-2"><input type="radio" name="radio-mode" id="radio-manual-mode">手动模式</input></div>
 		<div class="col-md-10">
-          <?php for ($i=1;$i<=3;$i++) { ?>
+          <?php for ($i=0;$i<3;$i++) { ?>
 		  <div class="row">
 	    	    <div class="panel panel-default panel-pattern">
                       <div class="panel-body">
-                        <div class="col-md-1"><label>时段<?php echo $i;?></label></div>
+                        <div class="col-md-1"><label>时段<?php echo $i+1;?></label></div>
 		        <div class="col-md-3">
                           <label>起始时间</label>
 		          <div class="input-group bootstrap-timepicker timepicker">
-		            <input id="period-<?php echo $i;?>-start-time" type="text" class="form-control input-small">
+		            <input id="tp-period-<?php echo $i;?>-start-time" type="text" class="form-control input-small">
 		            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                           </div>
-                          <script type="text/javascript">
-                            $('#period-<?php echo $i;?>-start-time').timepicker();
-                          </script>
                         </div>
 		        <div class="col-md-3">
                           <label>结束时间</label>
 		          <div class="input-group bootstrap-timepicker timepicker">
-		            <input id="period-<?php echo $i;?>-end-time" type="text" class="form-control input-small">
+		            <input id="tp-period-<?php echo $i;?>-end-time" type="text" class="form-control input-small">
 		            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                           </div>
-                          <script type="text/javascript">
-                            $('#period-<?php echo $i;?>-end-time').timepicker();
-                          </script>
                         </div>
                         <div class="col-md-2">
                           <label>状态</label>
-          	          <input type="checkbox" id="chk-period-<?php echo $i;?>-charging" data-on-text="放电" data-off-text="充电"/>
-                          <script type="text/javascript">
-		                    $("#chk-period-<?php echo $i;?>-charging").bootstrapSwitch();
-                          </script>
+          	              <input type="checkbox" id="chk-period-<?php echo $i;?>-charging" data-on-text="放电" data-off-text="充电"/>
+                        </div>
+                        <div class="col-md-1">
+                          <button type="button" class="btn btn-default" id="btn-period-<?php echo $i;?>-submit">保存</button>
                         </div>
                       </div>
                      </div>
 		  </div>
           <?php } ?>
           <div class="row">
-		    <button type="button" class="btn btn-success" id="btn-manual-run">启动</button>
+            <input type="checkbox" id="chk-manual-running" data-on-text="启动" data-off-text="停止"/>
           </div>
                 </div>
               </div>
@@ -110,6 +92,6 @@
     </div>
   </div>
 </div>
-<script src="<?php echo base_url('public/lib/bootstrap-timepicker/js/bootstrap-timepicker.min.js'); ?>"></script>
 <?php $this->load->view('footer'); ?>
+<script src="<?php echo base_url('public/js/battery_operation.js'); ?>"></script>
 <?php $this->load->view('foot_segment'); ?>

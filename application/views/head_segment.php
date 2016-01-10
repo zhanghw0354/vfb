@@ -21,3 +21,5 @@
     <script src="<?php echo base_url('public/js/jquery-1.11.3.min.js'); ?>"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url('public/lib/bootstrap/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/js/config.js'); ?>"></script>
+    <script src="<?php echo base_url('public/js/request_util.js'); ?>"></script>

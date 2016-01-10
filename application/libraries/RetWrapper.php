@@ -9,21 +9,11 @@ class RetWrapper {
       */
     public function getStatusInfo($message = null, $code = null, $level = null, $errorData = null) {
         return array(
-                'errorCode' => $code,
-                'errorMsg' => $message,
-                'errorLevel' => $level,
-                'errorData' => $errorData,
+                'error_code' => $code,
+                'error_msg' => $message,
+                'error_level' => $level,
+                'error_data' => $errorData,
                 );
-    }
-
-    private function _getDataList($data) {
-        if (isset($data['total_count']) && isset($data['data_list'])) {
-            return array(
-                    'totalCount' => $data['total_count'],
-                    'dataList' => $data['data_list'],
-                    );
-        }
-        return $data;
     }
 
     /**
@@ -35,7 +25,7 @@ class RetWrapper {
         }
         $ret = array(
                 'status' => 0,
-                'statusInfo' => $statusInfo,
+                'status_info' => $statusInfo,
                 'data' => null,
                 );
         return json_encode($ret);
@@ -46,10 +36,9 @@ class RetWrapper {
       */
     public function ok($data) {
         $statusInfo = $this->getStatusInfo();
-        $data = $this->_getDataList($data);
         $ret = array(
                 'status' => 1,
-                'statusInfo' => $statusInfo,
+                'status_info' => $statusInfo,
                 'data' => $data,
                 );
         return json_encode($ret);
