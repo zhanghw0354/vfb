@@ -12,11 +12,11 @@
         <h3 class="panel-title">风扇和泵</h3>
       </div>
       <div class="panel-body">
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-6">
           <label for="btn-operate-fan">风扇</label>
           <input type="checkbox" class="chk-submit-operation" id="chk-fan" data-on-text="关闭" data-off-text="打开"/>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-6">
           <label for="btn-operate-fan">泵</label>
           <input type="checkbox" class="chk-submit-operation" id="chk-pump" data-on-text="关闭" data-off-text="打开"/>
         </div>
@@ -33,12 +33,12 @@
             <div class="panel panel-default panel-pattern pannel-auto-pattern">
               <div class="panel-body">
                 <div class="col-md-2"><input type="radio" name="radio-mode" id="radio-auto-mode">自动模式</input></div>
-		<div class="col-md-2">
+		<div class="col-md-2 col-xs-6">
 		  <div class="row">
           	          <input type="checkbox" class="chk-submit-operation" id="chk-auto-charging" data-on-text="停止充电" data-off-text="开始充电"/>
                   </div>
                 </div>
-		<div class="col-md-2">
+		<div class="col-md-2 col-xs-6">
 		  <div class="row">
           	          <input type="checkbox" class="chk-submit-operation" id="chk-auto-discharging" data-on-text="停止放电" data-off-text="开始放电"/>
                   </div>
@@ -71,7 +71,7 @@
                           </div>
                         </div>
                         <div class="col-md-2">
-                          <label>状态</label>
+                          <div><label>状态</label></div>
           	              <input type="checkbox" id="chk-period-<?php echo $i;?>-charging" class="chk-manual-period-charging" data-on-text="放电" data-off-text="充电"/>
                         </div>
                         <div class="col-md-1">
