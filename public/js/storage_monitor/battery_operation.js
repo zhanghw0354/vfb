@@ -4,16 +4,17 @@ $(function(){
 function InitOperationView() {
     var requestObj = new RequestUtil();
     requestObj.post('batteryoperation/getOperationInfo','',function(apiRet){
-        $("#chk-fan").bootstrapSwitch('state',apiRet.is_fan_running);
-        $("#chk-pump").bootstrapSwitch('state',apiRet.is_pump_running);
+        $("#chk-fan").bootstrapSwitch('state',parseInt(apiRet.is_fan_running));
+        $("#chk-pump").bootstrapSwitch('state',parseInt(apiRet.is_pump_running));
         $("#radio-auto-mode").attr('checked',apiRet.is_auto_mode == 1);
         $("#radio-manual-mode").attr('checked',apiRet.is_auto_mode == 0);
-        $("#chk-auto-charging").bootstrapSwitch('state',apiRet.auto_mode_is_charging);
-        $("#chk-auto-discharging").bootstrapSwitch('state',apiRet.auto_mode_is_discharging);
+        $("#chk-auto-charging").bootstrapSwitch('state',parseInt(apiRet.auto_mode_is_charging));
+        $("#chk-auto-discharging").bootstrapSwitch('state',parseInt(apiRet.auto_mode_is_discharging));
 
         periodCount = apiRet.periods.length;
         for (var i = 0; i < periodCount; i++) {
-            $('#chk-period-'+i+'-charging').bootstrapSwitch('state',apiRet.periods[i].is_charging);
+            $('#chk-period-'+i+'-charging').bootstrapSwitch('state',parseInt(apiRet.periods[i].is_charging));
+            $('#chk-period-'+i+'-charging').bootstrapSwitch('onSwitchChange',EnableManualModeSubmitBtn);
             timepickerOptions = {
                 maxHours: 23,
                 minuteStep: 1,
@@ -30,10 +31,12 @@ function InitOperationView() {
             $('#tp-period-'+i+'-end-time').timepicker(timepickerOptions);
             $('#tp-period-'+i+'-start-time').timepicker('setTime',apiRet.periods[i].start_time);
             $('#tp-period-'+i+'-end-time').timepicker('setTime',apiRet.periods[i].end_time);
+            $('#tp-period-'+i+'-start-time').timepicker().on('changeTime.timepicker',EnableManualModeSubmitBtn);
+            $('#tp-period-'+i+'-end-time').timepicker().on('changeTime.timepicker',EnableManualModeSubmitBtn);
             $('#btn-period-'+i+'-submit').attr('disabled','disabled');
         }
 
-        $("#chk-manual-running").bootstrapSwitch('state',apiRet.manual_mode_is_running);
+        $("#chk-manual-running").bootstrapSwitch('state',parseInt(apiRet.manual_mode_is_running));
         DisableModeElements();
         $("input[name='radio-mode']").change(DisableModeElements);
         $(".chk-submit-operation").bootstrapSwitch('onSwitchChange',SubmitOperations);
@@ -60,6 +63,19 @@ function DisableModeElements() {
         $('#chk-manual-running').bootstrapSwitch('disabled', false);
     }
 }
+
+function EnableManualModeSubmitBtn(event) {
+    targetId = event.target.id;
+    if (targetId.indexOf('tp-period-') == 0) {
+        index = targetId.substr(10,1);
+    } else if (targetId.indexOf('chk-period-') == 0) {
+        index = targetId.substr(11,1);
+    } else {
+        return;
+    }
+    $('#btn-period-'+index+'-submit').removeAttr('disabled');
+}
+
 function SubmitOperations(event) {
     targetId = event.target.id;
     target = $('#'+targetId);
@@ -93,11 +109,29 @@ function SubmitOperations(event) {
             };
             break;
         default:
-            alert('参数错误');
-            return;
+            if (targetId.indexOf('btn-period-') == 0) {
+                index = targetId.substr(11,1);
+                chargingStatus = $('#chk-period-'+index+'-charging').bootstrapSwitch('state') ? 1 : 0;
+                tpStartTime = $('#tp-period-'+index+'-start-time');
+                startTime = tpStartTime[0].value;
+                tpEndTime = $('#tp-period-'+index+'-end-time');
+                endTime = tpEndTime[0].value;
+                params = {
+                    'is_auto_mode' : 0,
+                    'periods' : {
+                        'index' : index,
+                        'start_time' : startTime,
+                        'end_time' : endTime,
+                        'is_charging' : chargingStatus
+                    }
+                };
+            } else {
+                alert('参数错误');
+                return;
+            }
     }
     var requestObj = new RequestUtil();
-    requestObj.post('batteryoperation/setOperationInfo','',function(apiRet){
+    requestObj.post('batteryoperation/setOperationInfo',params,function(apiRet){
         alert('操作成功');
     });
 }
