@@ -14,11 +14,11 @@
       <div class="panel-body">
         <div class="col-md-2">
           <label for="btn-operate-fan">风扇</label>
-          <input type="checkbox" id="chk-fan" data-on-text="关闭" data-off-text="打开"/>
+          <input type="checkbox" class="chk-submit-operation" id="chk-fan" data-on-text="关闭" data-off-text="打开"/>
         </div>
         <div class="col-md-2">
           <label for="btn-operate-fan">泵</label>
-          <input type="checkbox" id="chk-pump" data-on-text="关闭" data-off-text="打开"/>
+          <input type="checkbox" class="chk-submit-operation" id="chk-pump" data-on-text="关闭" data-off-text="打开"/>
         </div>
       </div>
     </div>
@@ -35,12 +35,12 @@
                 <div class="col-md-2"><input type="radio" name="radio-mode" id="radio-auto-mode">自动模式</input></div>
 		<div class="col-md-2">
 		  <div class="row">
-          	          <input type="checkbox" id="chk-auto-charging" data-on-text="停止充电" data-off-text="开始充电"/>
+          	          <input type="checkbox" class="chk-submit-operation" id="chk-auto-charging" data-on-text="停止充电" data-off-text="开始充电"/>
                   </div>
                 </div>
 		<div class="col-md-2">
 		  <div class="row">
-          	          <input type="checkbox" id="chk-auto-discharging" data-on-text="停止放电" data-off-text="开始放电"/>
+          	          <input type="checkbox" class="chk-submit-operation" id="chk-auto-discharging" data-on-text="停止放电" data-off-text="开始放电"/>
                   </div>
                 </div>
               </div>
@@ -59,30 +59,30 @@
 		        <div class="col-md-3">
                           <label>起始时间</label>
 		          <div class="input-group bootstrap-timepicker timepicker">
-		            <input id="tp-period-<?php echo $i;?>-start-time" type="text" class="form-control input-small">
+		            <input id="tp-period-<?php echo $i;?>-start-time" type="text" class="form-control input-small tp-manual-time">
 		            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                           </div>
                         </div>
 		        <div class="col-md-3">
                           <label>结束时间</label>
 		          <div class="input-group bootstrap-timepicker timepicker">
-		            <input id="tp-period-<?php echo $i;?>-end-time" type="text" class="form-control input-small">
+		            <input id="tp-period-<?php echo $i;?>-end-time" type="text" class="form-control input-small tp-manual-time">
 		            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                           </div>
                         </div>
                         <div class="col-md-2">
                           <label>状态</label>
-          	              <input type="checkbox" id="chk-period-<?php echo $i;?>-charging" data-on-text="放电" data-off-text="充电"/>
+          	              <input type="checkbox" id="chk-period-<?php echo $i;?>-charging" class="chk-manual-period-charging" data-on-text="放电" data-off-text="充电"/>
                         </div>
                         <div class="col-md-1">
-                          <button type="button" class="btn btn-default" id="btn-period-<?php echo $i;?>-submit">保存</button>
+                          <button type="button" class="btn btn-default btn-manual-submit" id="btn-period-<?php echo $i;?>-submit">保存</button>
                         </div>
                       </div>
                      </div>
 		  </div>
           <?php } ?>
           <div class="row">
-            <input type="checkbox" id="chk-manual-running" data-on-text="停止" data-off-text="启动"/>
+            <input type="checkbox" class="chk-submit-operation" id="chk-manual-running" data-on-text="停止" data-off-text="启动"/>
           </div>
                 </div>
               </div>

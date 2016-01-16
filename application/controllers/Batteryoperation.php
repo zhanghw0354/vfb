@@ -31,4 +31,8 @@ class Batteryoperation extends MY_Controller {
 		);
 		$this->echoJson($operationInfo);
 	}
+
+    public function setOperationInfo () {
+        $this->echoJson();
+    }
 }
